@@ -25,8 +25,9 @@ class View extends Command
     /**
      * Execute the console command.
      *
-     * @param  Factory  $cache
-     * @param  Repository  $config
+     * @param Factory    $cache
+     * @param Repository $config
+     *
      * @return void
      */
     public function handle(Factory $cache, Repository $config)

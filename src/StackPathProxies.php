@@ -4,7 +4,6 @@ namespace Cryental\StackPath;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Http\Client\Factory as HttpClient;
-use Illuminate\Support\Str;
 use UnexpectedValueException;
 
 class StackPathProxies
@@ -26,8 +25,8 @@ class StackPathProxies
     /**
      * Create a new instance of CloudflareProxies.
      *
-     * @param  \Illuminate\Contracts\Config\Repository  $config
-     * @param  \Illuminate\Http\Client\Factory  $http
+     * @param \Illuminate\Contracts\Config\Repository $config
+     * @param \Illuminate\Http\Client\Factory         $http
      */
     public function __construct(Repository $config, HttpClient $http)
     {

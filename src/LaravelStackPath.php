@@ -30,7 +30,8 @@ final class LaravelStackPath
     /**
      * Set a callback that should be used when getting the proxies addresses.
      *
-     * @param  \Closure  $callback
+     * @param \Closure $callback
+     *
      * @return void
      */
     public static function getProxiesUsing($callback): void

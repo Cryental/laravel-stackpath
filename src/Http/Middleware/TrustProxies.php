@@ -13,7 +13,7 @@ class TrustProxies extends Middleware
     /**
      * Sets the trusted proxies on the request to the value of StackPath ips.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      */
     protected function setTrustedProxyIpAddresses(Request $request)
     {
