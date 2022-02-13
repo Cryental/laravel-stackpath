@@ -1,7 +1,6 @@
 {
     "name": "cryental/laravel-stackpath",
     "description": "Add StackPath ip addresses to trusted proxies for Laravel.",
-    "keywords": ["laravel", "php", "cloudflare", "proxies"],
     "type": "library",
     "license": "MIT",
     "authors": [
