@@ -2,7 +2,7 @@
 
 namespace Cryental\StackPath;
 
-use Monicahq\Cloudflare\Facades\CloudflareProxies;
+use Cryental\StackPath\Facades\StackPathProxies;
 
 final class LaravelStackPath
 {
@@ -24,7 +24,7 @@ final class LaravelStackPath
             return call_user_func(static::$getProxiesCallback);
         }
 
-        return CloudflareProxies::load();
+        return StackPathProxies::load();
     }
 
     /**

@@ -2,10 +2,9 @@
 
 namespace Cryental\StackPath\Facades;
 
-use Cryental\StackPath\StackPathProxies;
 use Illuminate\Support\Facades\Facade;
 
-class CloudflareProxies extends Facade
+class StackPathProxies extends Facade
 {
     /**
      * Get the registered name of the component.
