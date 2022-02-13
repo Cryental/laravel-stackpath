@@ -38,7 +38,8 @@ class TrustedProxyServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/laravelstackpath.php', 'laravelstackpath'
+            __DIR__.'/../config/laravelstackpath.php',
+            'laravelstackpath'
         );
         $this->app->singleton(\Cryental\StackPath\Facades\StackPathProxies::class, \Cryental\StackPath\StackPathProxies::class);
 
