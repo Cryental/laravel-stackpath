@@ -52,26 +52,22 @@ class StackPathProxies
     protected function retrieve(): array
     {
         try {
-            $client_id = $this->config->get('stackpath.client_id');
-            $client_secret = $this->config->get('stackpath.client_secret');
+            $client_id = $this->config->get('laravelstackpath.client_id');
+            $client_secret = $this->config->get('laravelstackpath.client_secret');
 
             $getBearerToken = $this->http->post('https://gateway.stackpath.com/identity/v1/oauth2/token', [
-                'form_params' => [
-                    'grant_type' => 'client_credentials',
-                    'client_id' => $client_id,
-                    'client_secret' => $client_secret,
-                ],
+                'grant_type' => 'client_credentials',
+                'client_id' => $client_id,
+                'client_secret' => $client_secret,
             ])->throw();
 
-            $response = $this->http->get('https://gateway.stackpath.com/cdn/v1/ips', [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . json_decode($getBearerToken->getBody()->getContents())->access_token,
-                ],
-            ])->throw();
+            $response = $this->http->withHeaders([
+                'Authorization' => 'Bearer ' . $getBearerToken->json()['access_token']
+            ])->get('https://gateway.stackpath.com/cdn/v1/ips')->throw();
         } catch (\Exception $e) {
             throw new UnexpectedValueException('Failed to load trust proxies from StackPath server.', 1, $e);
         }
 
-        return json_decode($response->body())->result;
+        return $response->json()['results'];
     }
 }
