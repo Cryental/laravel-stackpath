@@ -52,13 +52,26 @@ class StackPathProxies
     protected function retrieve(): array
     {
         try {
-            $url = $this->config->get('laravelstackpath.url');
+            $client_id = $this->config->get('stackpath.client_id');
+            $client_secret = $this->config->get('stackpath.client_secret');
 
-            $response = $this->http->get($url)->throw();
+            $getBearerToken = $this->http->post('https://gateway.stackpath.com/identity/v1/oauth2/token', [
+                'form_params' => [
+                    'grant_type' => 'client_credentials',
+                    'client_id' => $client_id,
+                    'client_secret' => $client_secret,
+                ],
+            ])->throw();
+
+            $response = $this->http->get('https://gateway.stackpath.com/cdn/v1/ips', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . json_decode($getBearerToken->getBody()->getContents())->access_token,
+                ],
+            ])->throw();
         } catch (\Exception $e) {
             throw new UnexpectedValueException('Failed to load trust proxies from StackPath server.', 1, $e);
         }
 
-        return array_filter(explode("\n", $response->body()));
+        return json_decode($response->body())->result;
     }
 }

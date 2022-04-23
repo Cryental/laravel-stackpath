@@ -2,5 +2,6 @@
 
 return [
     'cache' => 'stackpath.proxies',
-    'url'   => 'https://support.stackpath.com/hc/en-us/article_attachments/5043708104091/ipblocks.txt',
+    'client_id' => env('STACKPATH_CLIENT_ID'),
+    'client_secret' => env('STACKPATH_CLIENT_SECRET'),
 ];
