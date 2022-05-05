@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'cache'         => 'stackpath.proxies',
-    'client_id'     => env('STACKPATH_CLIENT_ID'),
-    'client_secret' => env('STACKPATH_CLIENT_SECRET'),
+    'cache' => 'stackpath.proxies',
+    'url'   => 'https://k3t9x2h3.map2.ssl.hwcdn.net/ipblocks.txt',
 ];
